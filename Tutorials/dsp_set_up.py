@@ -5,17 +5,32 @@ Created on Fri Sep  9 09:15:24 2016
 @author: Nevil Dsouza
 """
 import wave
+from scipy.fftpack import fft
 #print("import success")
 
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
     print("inside f(x)")
-    return []
+    for i in vector:
+        for j in i:
+            if j<0:
+                ind = i.index(j)
+                j=0-j
+                del i[ind]
+                i.insert(ind,j)
+    return vector
     
 ### method to compute FFT
-def fft(x):
+def ff(x,N):
     print("inside f(x)")
-    return []
+    result=[]
+    
+    i=0
+
+    while i!=N:   
+        result.append(list(x.readframes(i)))
+        i+=100        
+    return result
 
 ### method to recognize a YES or a NO from wav sample
 def recognize_yes_or_no(N,fs,wav):
@@ -30,9 +45,11 @@ def recognize_yes_or_no(N,fs,wav):
     
     print("values of k1,k2 are:",k1,k2)
     
-    X=absolute_value_of_vector(fft(wav))
+    X=absolute_value_of_vector(ff(wav,N))
     
-    #f=sum(X[1:k1])/sum(X[k1:k2])
+    if k1<N and k2<N:
+        f=sum(X[1:k1])/sum(X[k1:k2])
+        print(f)
     f=10
     
     if f<F:
