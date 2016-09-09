@@ -39,3 +39,24 @@ the training files because their sampling rate is 22050 Hz.
 2. .OPUS Files: .OGG format used by Whatsapp Inc to store Voice Notes. This was done to overcome platform specific issues faced by AAC and AMR formats
 3. DFT is mathematical idea which takes a signal and produces its spectrum. The spectrum is the set of sinusoids that add up to produce the signal.
 4. FFT is an algorithm which is an efficient way to compute the DFT.
+
+
+### CODE IN PDF
+
+    function output = yes_no(x,fs)
+    % function output = yes_no(x,fs)
+    % Simple algorithm for deciding whether the audio signal
+    % in vector x is the word 'yes' or 'no'.
+    % x (vector) speech signal
+    % fs (scalar) sampling frequency in Hz
+    % output (string) 'yes' or 'no'
+    threshold = 12; % threshold value
+    N = length(x);
+    k1 = round(N*5000/fs); % FFT component corresponding to 5000 Hz
+    k2 = round(N*11025/fs); % FFT component corresponding to 11025 Hz
+    X = abs(fft(x));
+    f = sum(X(1:k1))/sum(X(k1:k2)); % calculate feature
+    if f < threshold,
+     output = 'yes'; % if feature is below threshold, return 'yes'
+    else
+     output = 'no'; % if feature is above threshold, return 'no'
