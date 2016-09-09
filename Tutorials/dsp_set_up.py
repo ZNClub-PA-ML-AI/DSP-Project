@@ -10,15 +10,15 @@ from scipy.fftpack import fft
 
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
-    print("inside f(x)")
+    print("inside absolute_value_of_vector f(x)")
+    result=[]
     for i in vector:
-        if i<0:
-            print("-ve")
-    return vector
+        result.append(int(round(abs(i))))
+    return result
     
 ### method to compute FFT
 def ff(x,N):
-    print("inside f(x)")
+    print("inside ff f(x)")
     result=[]
     
     i=0
@@ -28,8 +28,13 @@ def ff(x,N):
         temp = list(x.readframes(i))
         for i in temp:
             result.append(i)
-        i+=100        
-    return result
+        i+=100    
+#    
+#    print("FFT is ",type(FFT))
+#    FFTlist = FFT.tolist()
+#    print("LIST is ",FFTlist[0],type(FFTlist[0]),abs(FFTlist[0]))
+#    
+    return fft(result)
 
 ### method to recognize a YES or a NO from wav sample
 def recognize_yes_or_no(N,fs,wav):
@@ -47,10 +52,11 @@ def recognize_yes_or_no(N,fs,wav):
     X=absolute_value_of_vector(ff(wav,N))
     
     if k1<N and k2<N:
-        a=X[1:k1]
-        print(a[k1])
-        #f=sum()/sum(X[k1:k2])
-        #print(f)
+        a=X[0:k1]
+        b=X[k1:k2]
+        #print(a[k1-1])
+        f=sum(a)/sum(b)
+        print("f=",f)
     f=10
     
     if f<F:
