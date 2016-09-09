@@ -40,6 +40,7 @@ the training files because their sampling rate is 22050 Hz.
 3. DFT is mathematical idea which takes a signal and produces its spectrum. The spectrum is the set of sinusoids that add up to produce the signal.
 4. FFT is an algorithm which is an efficient way to compute the DFT.
 5. An audio frame, or sample, contains amplitude (loudness) information at that particular point in time.
+6. [Compute FFT of wav](http://stackoverflow.com/questions/23377665/python-scipy-fft-wav-files)
 
 ### Code in Research Paper
 
