@@ -8,5 +8,7 @@ import wave
 print("import success")
 
 ### read a wav file
-with wave.open("", mode='rb'):
+with wave.open("test1.wav", mode='rb') as wav:
     print("read success")
+    wav.close()
+    print("close success")
