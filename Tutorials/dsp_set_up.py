@@ -4,5 +4,9 @@ Created on Fri Sep  9 09:15:24 2016
 
 @author: Nevil Dsouza
 """
+import wave
+print("import success")
 
-
+### read a wav file
+with wave.open("", mode='rb'):
+    print("read success")
