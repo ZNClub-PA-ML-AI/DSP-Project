@@ -5,20 +5,10 @@ Created on Sat Sep 10 17:16:29 2016
 @author: Nevil Dsouza
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep  9 09:15:24 2016
-
-@author: Nevil Dsouza
-"""
 import wave
 from scipy.fftpack import fft
 #print("import success")
 
-### method to read test WAV files in database
-def read_wav():
-    print("inside read_wav f(x)")
-    return "../Database/Tutorials/WAV/test1.wav"
 
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
@@ -78,35 +68,61 @@ def recognize_yes_or_no(N,fs,wav):
     return
 
 
+
+
+
+
+
+
+
+
+### method to read test WAV files in database
+def read_wav(inp):
+    print("inside read_wav f(x)",inp)
+    return "../Database/Tutorials/WAV/test"+str(inp)+".wav"
+
+def test_fft(file_path):
+        
+    
+    with wave.open(file_path, mode='rb') as wav:
+        print("read success",file_path)
+    #    
+    #    # does not work
+    #    print(wav)
+    #    
+    #    print("Returns number of audio channels (1 for mono, 2 for stereo).\n",wav.getnchannels())
+    #    
+    #    print("Returns sample width in bytes.\n",wav.getsampwidth())
+    #    
+    #    print("Returns sampling frequency.\n",wav.getframerate())
+    #
+    #    print("Returns number of audio frames.\n",wav.getnframes())
+    #    
+    #    print("Returns compression type \n",wav.getcomptype(),wav.getcompname())    
+    #
+    #    print("Returns a namedtuple() (nchannels, sampwidth, framerate, nframes, comptype, compname), equivalent to output of the get*() methods\n",wav.getparams())    
+    #    
+        recognize_yes_or_no(wav.getnframes(),wav.getframerate(),wav)    
+        
+        wav.close()
+        print("close success")
+        
+
+
+
+
+
 ### ENTRY POINT OF PROGRAM
-
-### read a wav file
-
-
 #file_path="../Database/Tutorials/WAV/test1.wav"
-file_path=read_wav()
 
-with wave.open(file_path, mode='rb') as wav:
-    print("read success")
-#    
-#    # does not work
-#    print(wav)
-#    
-#    print("Returns number of audio channels (1 for mono, 2 for stereo).\n",wav.getnchannels())
-#    
-#    print("Returns sample width in bytes.\n",wav.getsampwidth())
-#    
-#    print("Returns sampling frequency.\n",wav.getframerate())
-#
-#    print("Returns number of audio frames.\n",wav.getnframes())
-#    
-#    print("Returns compression type \n",wav.getcomptype(),wav.getcompname())    
-#
-#    print("Returns a namedtuple() (nchannels, sampwidth, framerate, nframes, comptype, compname), equivalent to output of the get*() methods\n",wav.getparams())    
-#    
-    recognize_yes_or_no(wav.getnframes(),wav.getframerate(),wav)    
-    
-    wav.close()
-    print("close success")
-    
-    
+inp = input("Enter Number of files to test OR Enter * to test all files\n")
+file_path=''
+
+if inp=='*':
+    for i in range(1,8):
+        file_path=read_wav(i)            
+        test_fft(file_path)
+else:
+    file_path=read_wav(inp)            
+    test_fft(file_path)
+
