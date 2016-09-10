@@ -66,7 +66,12 @@ def recognize_yes_or_no(N,fs,wav):
     return
 
 ### read a wav file
-with wave.open("test1.wav", mode='rb') as wav:
+
+#E:\github\ZNClub-PA-ML-AI\DSP-Project\Database\Tutorials\WAV
+
+file_path="test1.wav"
+
+with wave.open(file_path, mode='rb') as wav:
     print("read success")
 #    
 #    # does not work
