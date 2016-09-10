@@ -67,7 +67,7 @@ def recognize_yes_or_no(N,fs,wav):
 
 ### read a wav file
 
-#E:\github\ZNClub-PA-ML-AI\DSP-Project\Database\Tutorials\WAV
+
 
 file_path="../Database/Tutorials/WAV/test1.wav"
 
