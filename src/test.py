@@ -15,6 +15,11 @@ import wave
 from scipy.fftpack import fft
 #print("import success")
 
+### method to read test WAV files in database
+def read_wav():
+    print("inside read_wav f(x)")
+    return "../Database/Tutorials/WAV/test1.wav"
+
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
     print("inside absolute_value_of_vector f(x)")
@@ -72,11 +77,14 @@ def recognize_yes_or_no(N,fs,wav):
         print("IVR RESPONSE = NO")        
     return
 
+
+### ENTRY POINT OF PROGRAM
+
 ### read a wav file
 
 
-
-file_path="../Database/Tutorials/WAV/test1.wav"
+#file_path="../Database/Tutorials/WAV/test1.wav"
+file_path=read_wav()
 
 with wave.open(file_path, mode='rb') as wav:
     print("read success")
