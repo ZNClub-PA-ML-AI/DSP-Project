@@ -42,7 +42,7 @@ def ff(x,N):
 ### method to recognize a YES or a NO from wav sample
 def recognize_yes_or_no(N,fs,wav):
     #print("inside f(x)")
-    print("N=",N," fs=",fs)
+    #print("N=",N," fs=",fs)
     # threshold frequency
     F=12    
     
@@ -59,13 +59,13 @@ def recognize_yes_or_no(N,fs,wav):
         b=X[k1:k2]
         #print(a[k1-1])
         f=sum(a)/sum(b)
-        print("f=",f)
+        #print("f=",f)
         
         f_list.append(f)
         fs_list.append(fs)
         N_list.append(N)
         
-#    
+#       
 #    if f<F:
 #        print("IVR RESPONSE = YES")
 #    else:
@@ -90,7 +90,7 @@ def test_fft(file_path):
         
     
     with wave.open(file_path, mode='rb') as wav:
-        print("read success",file_path)
+        #print("read success",file_path)
     #    
     #    # does not work
     #    print(wav)
@@ -137,4 +137,17 @@ if inp=='*':
 else:
     file_path=read_wav(inp)            
     test_fft(file_path)
+
+#plt.plot(f_list,'r')
+### plot first histogram
+
+#f_list
+bins=[0.5,1.0,1.5,2.0,2.5,3.0]
+plt.hist(f_list, bins, histtype='bar', rwidth=0.8)
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Interesting Graph\nCheck it out')
+plt.legend()
+plt.show()
 
