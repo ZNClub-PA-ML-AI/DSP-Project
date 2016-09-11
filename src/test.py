@@ -7,12 +7,13 @@ Created on Sat Sep 10 17:16:29 2016
 
 import wave
 from scipy.fftpack import fft
+import matplotlib.pyplot as plt
 #print("import success")
 
 
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
-    print("inside absolute_value_of_vector f(x)")
+    #print("inside absolute_value_of_vector f(x)")
     result=[]
     for i in vector:
         result.append(int(round(abs(i))))
@@ -20,7 +21,7 @@ def absolute_value_of_vector(vector):
     
 ### method to compute FFT
 def ff(x,N):
-    print("inside ff f(x)")
+    #print("inside ff f(x)")
     result=[]
     
     i=0
@@ -40,7 +41,7 @@ def ff(x,N):
 
 ### method to recognize a YES or a NO from wav sample
 def recognize_yes_or_no(N,fs,wav):
-    print("inside f(x)")
+    #print("inside f(x)")
     print("N=",N," fs=",fs)
     # threshold frequency
     F=12    
@@ -49,7 +50,7 @@ def recognize_yes_or_no(N,fs,wav):
     k1=round(N*5000/fs)
     k2=round(N*11025/fs)
     
-    print("values of k1,k2 are:",k1,k2)
+    #print("values of k1,k2 are:",k1,k2)
     
     X=absolute_value_of_vector(ff(wav,N))
     
@@ -59,13 +60,17 @@ def recognize_yes_or_no(N,fs,wav):
         #print(a[k1-1])
         f=sum(a)/sum(b)
         print("f=",f)
-    f=10
-    
-    if f<F:
-        print("IVR RESPONSE = YES")
-    else:
-        print("IVR RESPONSE = NO")        
-    return
+        
+        f_list.append(f)
+        fs_list.append(fs)
+        N_list.append(N)
+        
+#    
+#    if f<F:
+#        print("IVR RESPONSE = YES")
+#    else:
+#        print("IVR RESPONSE = NO")        
+#    return
 
 
 
@@ -79,7 +84,7 @@ def recognize_yes_or_no(N,fs,wav):
 ### method to read test WAV files in database
 def read_wav(inp):
     print("inside read_wav f(x)",inp)
-    return "../Database/Tutorials/WAV/test"+str(inp)+".wav"
+    return "../Database/Testing/WAV/test"+str(inp)+".wav"
 
 def test_fft(file_path):
         
@@ -116,10 +121,17 @@ def test_fft(file_path):
 #file_path="../Database/Tutorials/WAV/test1.wav"
 
 inp = input("Enter Number of files to test OR Enter * to test all files\n")
+
+### global variables to store results
+
 file_path=''
+f_list=[]
+fs_list=[]
+N_list=[]
+
 
 if inp=='*':
-    for i in range(1,8):
+    for i in range(1,12):
         file_path=read_wav(i)            
         test_fft(file_path)
 else:
