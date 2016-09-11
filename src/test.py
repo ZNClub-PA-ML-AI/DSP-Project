@@ -142,12 +142,28 @@ else:
 ### plot first histogram
 
 #f_list
-bins=[0.5,1.0,1.5,2.0,2.5,3.0]
-plt.hist(f_list, bins, histtype='bar', rwidth=0.8)
+#bins=[0.5,1.0,1.5,2.0,2.5,3.0]
+#plt.hist(f_list, bins, histtype='bar', rwidth=0.8)
+#
+#plt.xlabel('x')
+#plt.ylabel('y')
+#plt.title('Interesting Graph\nCheck it out')
+#plt.legend()
+#plt.show()
 
-plt.xlabel('x')
-plt.ylabel('y')
-plt.title('Interesting Graph\nCheck it out')
-plt.legend()
-plt.show()
+yes_f=[]
+yes_f.extend(f_list[0])
+yes_f.extend(f_list[2:6])
+yes_f.extend(f_list[10])
+
+no_f=[]
+no_f.extend(f_list[1])
+no_f.extend(f_list[7:9])
+
+
+
+
+
+
+
 
