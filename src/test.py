@@ -166,7 +166,7 @@ bins=[]
 bins.append(s)
 
 for i in range(15):
-    s=s+0.1
+    s=s+0.05
     bins.append(s)
     
 #print(bins)
@@ -174,10 +174,10 @@ for i in range(15):
 ### histogram
 #plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
 #plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
-plt.hist(f_list, bins, histtype='bar', rwidth=0.3)
+plt.hist(no_f, bins, histtype='bar', rwidth=0.05)
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Interesting Graph\nCheck it out')
+plt.title('no list histogram')
 plt.legend()
 plt.show()
 
