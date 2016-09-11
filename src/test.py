@@ -162,23 +162,35 @@ no_f.append(f_list[1])
 no_f.extend(f_list[7:9])
 
 s=1.6
-bin=[]
-bin.append(s)
+bins=[]
+bins.append(s)
 
 for i in range(15):
     s=s+0.1
-    bin.append(s)
+    bins.append(s)
     
-print(bin)
+#print(bins)
 
 
-plt.hist(yes_f, bin, histtype='bar', rwidth=0.3)
+#plt.hist(yes_f, bin, histtype='bar', rwidth=0.3)
+#plt.xlabel('x')
+#plt.ylabel('y')
+#plt.title('Interesting Graph\nCheck it out')
+#plt.legend()
+#plt.show()
+
+plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Interesting Graph\nCheck it out')
 plt.legend()
 plt.show()
 
+
+### save as png
+
+fig = plt.figure()
+fig.savefig('foo.png')
 
 
 
