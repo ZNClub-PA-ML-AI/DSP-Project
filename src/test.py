@@ -8,6 +8,7 @@ Created on Sat Sep 10 17:16:29 2016
 import wave
 from scipy.fftpack import fft
 import matplotlib.pyplot as plt
+from decimal import Decimal as D
 #print("import success")
 
 
@@ -152,16 +153,31 @@ else:
 #plt.show()
 
 yes_f=[]
-yes_f.extend(f_list[0])
+yes_f.append(f_list[0])
 yes_f.extend(f_list[2:6])
-yes_f.extend(f_list[10])
+yes_f.append(f_list[10])
 
 no_f=[]
-no_f.extend(f_list[1])
+no_f.append(f_list[1])
 no_f.extend(f_list[7:9])
 
+s=1.6
+bin=[]
+bin.append(s)
+
+for i in range(15):
+    s=s+0.1
+    bin.append(s)
+    
+print(bin)
 
 
+plt.hist(yes_f, bin, histtype='bar', rwidth=0.3)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Interesting Graph\nCheck it out')
+plt.legend()
+plt.show()
 
 
 
