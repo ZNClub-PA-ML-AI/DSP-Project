@@ -171,26 +171,20 @@ for i in range(15):
     
 #print(bins)
 
-
-#plt.hist(yes_f, bin, histtype='bar', rwidth=0.3)
-#plt.xlabel('x')
-#plt.ylabel('y')
-#plt.title('Interesting Graph\nCheck it out')
-#plt.legend()
-#plt.show()
-
-plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
+### histogram
+#plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
+#plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
+plt.hist(f_list, bins, histtype='bar', rwidth=0.3)
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Interesting Graph\nCheck it out')
 plt.legend()
 plt.show()
 
-
 ### save as png
-
-fig = plt.figure()
-fig.savefig('foo.png')
+#*
+#fig = plt.figure()
+#fig.savefig('foo.png')
 
 
 
