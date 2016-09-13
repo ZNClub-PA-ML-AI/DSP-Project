@@ -8,7 +8,6 @@ Created on Sat Sep 10 17:16:29 2016
 import wave
 from scipy.fftpack import fft
 import matplotlib.pyplot as plt
-from decimal import Decimal as D
 #print("import success")
 
 
@@ -45,7 +44,7 @@ def recognize_yes_or_no(N,fs,wav):
     #print("inside f(x)")
     #print("N=",N," fs=",fs)
     # threshold frequency
-    F=12    
+    F=2.1   
     
     # length of samples
     k1=round(N*5100/fs)
@@ -132,7 +131,7 @@ N_list=[]
 
 
 if inp=='*':
-    for i in range(1,12):
+    for i in range(1,25):
         file_path=read_wav(i)            
         test_fft(file_path)
 else:
@@ -156,10 +155,13 @@ yes_f=[]
 yes_f.append(f_list[0])
 yes_f.extend(f_list[2:6])
 yes_f.append(f_list[10])
+yes_f.append(f_list[11:18])
+
 
 no_f=[]
 no_f.append(f_list[1])
 no_f.extend(f_list[7:9])
+no_f.extend(f_list[18:])
 
 s=1.6
 bins=[]
