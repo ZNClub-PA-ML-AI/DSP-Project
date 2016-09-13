@@ -1,0 +1,112 @@
+### RESULTS OF TESTING
+
+inside read_wav f(x) 1
+read success ../Database/Testing/WAV/test1.wav
+inside f(x)
+N= 97920  fs= 48000
+values of k1,k2 are: 10200 22491
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 1.7897354591094172
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 2
+read success ../Database/Testing/WAV/test2.wav
+inside f(x)
+N= 105496  fs= 48000
+values of k1,k2 are: 10989 24231
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.0000556662850406
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 3
+read success ../Database/Testing/WAV/test3.wav
+inside f(x)
+N= 102720  fs= 48000
+values of k1,k2 are: 10700 23594
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 1.7639526514618102
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 4
+read success ../Database/Testing/WAV/test4.wav
+inside f(x)
+N= 109336  fs= 48000
+values of k1,k2 are: 11389 25113
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 1.7673747775728013
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 5
+read success ../Database/Testing/WAV/test5.wav
+inside f(x)
+N= 174720  fs= 48000
+values of k1,k2 are: 18200 40131
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.2975363943924307
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 6
+read success ../Database/Testing/WAV/test6.wav
+inside f(x)
+N= 116160  fs= 48000
+values of k1,k2 are: 12100 26680
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.062748321698994
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 7
+read success ../Database/Testing/WAV/test7.wav
+inside f(x)
+N= 112320  fs= 48000
+values of k1,k2 are: 11700 25798
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.110074919305182
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 8
+read success ../Database/Testing/WAV/test8.wav
+inside f(x)
+N= 94936  fs= 48000
+values of k1,k2 are: 9889 21806
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.066593290527426
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 9
+read success ../Database/Testing/WAV/test9.wav
+inside f(x)
+N= 110400  fs= 48000
+values of k1,k2 are: 11500 25358
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.49996815125467
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 10
+read success ../Database/Testing/WAV/test10.wav
+inside f(x)
+N= 93120  fs= 48000
+values of k1,k2 are: 9700 21388
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 3.17938879378833
+IVR RESPONSE = YES
+close success
+inside read_wav f(x) 11
+read success ../Database/Testing/WAV/test11.wav
+inside f(x)
+N= 105600  fs= 48000
+values of k1,k2 are: 11000 24255
+inside ff f(x)
+inside absolute_value_of_vector f(x)
+f= 2.420319865477964
+IVR RESPONSE = YES
+close success
