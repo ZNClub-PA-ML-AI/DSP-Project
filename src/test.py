@@ -48,8 +48,8 @@ def recognize_yes_or_no(N,fs,wav):
     F=12    
     
     # length of samples
-    k1=round(N*5000/fs)
-    k2=round(N*11025/fs)
+    k1=round(N*5100/fs)
+    k2=round(N*11125/fs)
     
     #print("values of k1,k2 are:",k1,k2)
     
@@ -174,10 +174,10 @@ for i in range(15):
 ### histogram
 #plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
 #plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
-plt.hist(no_f, bins, histtype='bar', rwidth=0.05)
+plt.hist(f_list, bins, histtype='bar', rwidth=0.05)
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('no list histogram')
+plt.title('f list histogram')
 plt.legend()
 plt.show()
 
