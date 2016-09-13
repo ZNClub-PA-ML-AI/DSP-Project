@@ -24,3 +24,14 @@
 ######22 NO
 ######23 NO
 ######24 NO
+
+
+### RESULTS
+
+#### FFT AVERAGE METHOD WHERE THRESHOLD=30000.0
+#####YES IF > THRESHOLD
+#####NO IF < THRESHOLD
+
+
+
+
