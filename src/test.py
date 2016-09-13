@@ -130,15 +130,19 @@ fs_list=[]
 N_list=[]
 
 
-if inp=='*':
-    for i in range(1,25):
-        file_path=read_wav(i)            
-        test_fft(file_path)
-else:
-    file_path=read_wav(inp)            
-    test_fft(file_path)
+### start reading and fft
+#
+#if inp=='*':
+#    for i in range(1,25):
+#        file_path=read_wav(i)            
+#        test_fft(file_path)
+#else:
+#    file_path=read_wav(inp)            
+#    test_fft(file_path)
+
 
 #plt.plot(f_list,'r')
+
 ### plot first histogram
 
 #f_list
@@ -150,18 +154,26 @@ else:
 #plt.title('Interesting Graph\nCheck it out')
 #plt.legend()
 #plt.show()
+#
+#print("len is ",len(f_list))
+#
 
-yes_f=[]
-yes_f.append(f_list[0])
-yes_f.extend(f_list[2:6])
-yes_f.append(f_list[10])
-yes_f.append(f_list[11:18])
+### separate f_list into yes and no lists
 
-
-no_f=[]
-no_f.append(f_list[1])
-no_f.extend(f_list[7:9])
-no_f.extend(f_list[18:])
+#yes_f=[]
+#yes_f.append(f_list[0])
+#yes_f.extend(f_list[2:7])
+#yes_f.append(f_list[10])
+#yes_f.extend(f_list[11:17])
+#
+#
+#
+#no_f=[]
+#no_f.append(f_list[1])
+#no_f.extend(f_list[7:10])
+#no_f.extend(f_list[17:25])
+#
+#print(len(yes_f),len(no_f))
 
 s=1.6
 bins=[]
@@ -174,12 +186,85 @@ for i in range(15):
 #print(bins)
 
 ### histogram
-#plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
+
+### data collected
+# cook your dish here
+f=[
+1.8279238193037686,
+2.029380294825224,
+1.797714791917991,
+1.792882235287508,
+2.3464554739078074,
+2.0926161658848734,
+2.1489278704251964,
+2.09749916556774,
+2.5518290122932603,
+3.2488481923491666,
+2.476341895719858,
+1.194488313703683,
+2.476341895719858,
+1.7449543234920712,
+1.829361890024695,
+1.4060512758206307,
+2.287071287121752,
+3.2488481923491666,
+1.8281688553976652,
+1.8870158430071122,
+2.2597055061539484,
+2.0732528174101432,
+1.9322300217652975,
+1.1672213269014295
+]
+
+
+
+no=[
+2.029380294825224,
+2.09749916556774,
+2.5518290122932603,
+3.2488481923491666,
+3.2488481923491666,
+1.8281688553976652,
+1.8870158430071122,
+2.2597055061539484,
+2.0732528174101432,
+1.9322300217652975,
+1.1672213269014295
+]
+
+
+yes=[
+1.8279238193037686,
+1.797714791917991,
+1.792882235287508,
+2.3464554739078074,
+2.0926161658848734,
+2.1489278704251964,
+2.476341895719858,
+1.194488313703683,
+2.476341895719858,
+1.7449543234920712,
+1.829361890024695,
+1.4060512758206307,
+2.287071287121752
+]
+
+
+#print(len(f))
+
+print(sum(f)/24)
+print(sum(no)/11)
+print(sum(yes)/13)
+
+
+
+
+plt.hist(yes, bins, histtype='bar', rwidth=0.3)
 #plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
-plt.hist(f_list, bins, histtype='bar', rwidth=0.05)
+#plt.hist(f, bins, histtype='bar', rwidth=0.05)
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('f list histogram')
+plt.title('yes list histogram')
 plt.legend()
 plt.show()
 
