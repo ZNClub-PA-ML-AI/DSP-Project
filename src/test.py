@@ -44,17 +44,20 @@ def recognize_yes_or_no(N,fs,wav):
     #print("inside f(x)")
     #print("N=",N," fs=",fs)
     # threshold frequency
-    F=2.1   
+    F=2.1 
     
     # length of samples
-    k1=round(N*5100/fs)
-    k2=round(N*11125/fs)
+    #k1=round(N*5100/fs)
+    #k2=round(N*11125/fs)
+    k1=10000
+    k2=20000
     
     #print("values of k1,k2 are:",k1,k2)
     
     X=absolute_value_of_vector(ff(wav,N))
     
-    
+    #avgx = sum(X)/len(X)
+    #N_list.append(avgx)
     
     if k1<N and k2<N:
         a=X[0:k1]
@@ -64,17 +67,17 @@ def recognize_yes_or_no(N,fs,wav):
         #print("f=",f)
         
         f_list.append(f)
-        fs_list.append(fs)
-        N_list.append(N)
-        k1_list.append(k1)
-        k2_list.append(k2)
-        
+#        fs_list.append(fs)
+#        N_list.append(N)
+#        k1_list.append(k1)
+#        k2_list.append(k2)
+#        
 #       
 #    if f<F:
 #        print("IVR RESPONSE = YES")
 #    else:
 #        print("IVR RESPONSE = NO")        
-    return X
+    return 
 
 
     
@@ -111,16 +114,16 @@ def test_fft(file_path):
     #
     #    print("Returns a namedtuple() (nchannels, sampwidth, framerate, nframes, comptype, compname), equivalent to output of the get*() methods\n",wav.getparams())    
     #    
-        X=recognize_yes_or_no(wav.getnframes(),wav.getframerate(),wav)
+        recognize_yes_or_no(wav.getnframes(),wav.getframerate(),wav)
         #print(min(X))
-        l=[i for i in range(100,50000,100)]
-        plt.hist(X, l, histtype='bar', rwidth=0.1)
-        plt.xlabel('x')
-        plt.ylabel('y')
-        plt.title('yes list histogram')
-        plt.legend()
-        plt.show()
-        
+#        l=[i for i in range(100,50000,100)]
+#        plt.hist(X, l, histtype='bar', rwidth=0.1)
+#        plt.xlabel('x')
+#        plt.ylabel('y')
+#        plt.title('yes list histogram')
+#        plt.legend()
+#        plt.show()
+#        
         wav.close()
         print("close success")
         
@@ -136,7 +139,7 @@ inp = input("Enter Number of files to test OR Enter * to test all files\n")
 
 ### global variables to store results
 
-X=[]
+
 file_path=''
 f_list=[]
 fs_list=[]
@@ -155,124 +158,66 @@ else:
     test_fft(file_path)
 
 
-
+#print(N_list)
 
 
 ### separate f_list into yes and no lists
 
-#yes_f=[]
-#yes_f.append(f_list[0])
-#yes_f.extend(f_list[2:7])
-#yes_f.append(f_list[10])
-#yes_f.extend(f_list[11:17])
-#
-#
-#
-#no_f=[]
-#no_f.append(f_list[1])
-#no_f.extend(f_list[7:10])
-#no_f.extend(f_list[17:25])
+yes_f=[]
+yes_f.append(f_list[0])
+yes_f.extend(f_list[2:7])
+yes_f.append(f_list[10])
+yes_f.extend(f_list[11:17])
 
-#print(len(yes_f),len(no_f))
+#
+#
+no_f=[]
+no_f.append(f_list[1])
+no_f.extend(f_list[7:10])
+no_f.extend(f_list[17:25])
 
-#s=1.6
+
+
+#
+##print(len(yes_f),len(no_f))
+
+#s=1.0
 #bins=[]
 #bins.append(s)
-#
-#for i in range(15):
+#for i in range(20):
 #    s=s+0.05
 #    bins.append(s)
 #    
 #print(bins)
 
-### histogram
-
-### data collected
-# cook your dish here
-#f=[
-#1.8279238193037686,
-#2.029380294825224,
-#1.797714791917991,
-#1.792882235287508,
-#2.3464554739078074,
-#2.0926161658848734,
-#2.1489278704251964,
-#2.09749916556774,
-#2.5518290122932603,
-#3.2488481923491666,
-#2.476341895719858,
-#1.194488313703683,
-#2.476341895719858,
-#1.7449543234920712,
-#1.829361890024695,
-#1.4060512758206307,
-#2.287071287121752,
-#3.2488481923491666,
-#1.8281688553976652,
-#1.8870158430071122,
-#2.2597055061539484,
-#2.0732528174101432,
-#1.9322300217652975,
-#1.1672213269014295
-#]
-#
-#
-#
-#no=[
-#2.029380294825224,
-#2.09749916556774,
-#2.5518290122932603,
-#3.2488481923491666,
-#3.2488481923491666,
-#1.8281688553976652,
-#1.8870158430071122,
-#2.2597055061539484,
-#2.0732528174101432,
-#1.9322300217652975,
-#1.1672213269014295
-#]
-#
-#
-#yes=[
-#1.8279238193037686,
-#1.797714791917991,
-#1.792882235287508,
-#2.3464554739078074,
-#2.0926161658848734,
-#2.1489278704251964,
-#2.476341895719858,
-#1.194488313703683,
-#2.476341895719858,
-#1.7449543234920712,
-#1.829361890024695,
-#1.4060512758206307,
-#2.287071287121752
-#]
+#### histogram
 #
 
-#print(len(f))
-
-#print(sum(f)/24)
-#print(sum(no)/11)
-#print(sum(yes)/13)
-
-
-### histogram
-
-#plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
-#plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
-#plt.hist(X, bins, histtype='bar', rwidth=0.05)
+#plt.hist(yes_f, bins, histtype='bar', rwidth=0.5)
+##plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
+##plt.hist(X, bins, histtype='bar', rwidth=0.05)
 #plt.xlabel('x')
 #plt.ylabel('y')
 #plt.title('yes list histogram')
 #plt.legend()
 #plt.show()
 
-### save as png
-#*
-#fig = plt.figure()
-#fig.savefig('foo.png')
 
+##plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
+#plt.hist(no_f, bins, histtype='bar', rwidth=0.5)
+##plt.hist(X, bins, histtype='bar', rwidth=0.05)
+#plt.xlabel('x')
+#plt.ylabel('y')
+#plt.title('no list histogram')
+#plt.legend()
+#plt.show()
 
-
+#
+#### save as png
+##*
+##fig = plt.figure()
+##fig.savefig('foo.png')
+#
+#
+#
 
