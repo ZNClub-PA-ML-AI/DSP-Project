@@ -6,10 +6,18 @@ Created on Sat Sep 10 17:16:29 2016
 """
 
 import wave
+import json
 from scipy.fftpack import fft
 import matplotlib.pyplot as plt
 #print("import success")
 
+### method to convert list to json
+def to_json(q,r):
+	d={}
+	for i in range(len(q)):
+		d[q[i]]=r[i]
+	with open('results.json', 'w') as fp:
+		json.dump(d, fp)
 
 ### method to compute absolute value of vector
 def absolute_value_of_vector(vector):
@@ -44,18 +52,18 @@ def recognize_yes_or_no(N,fs,wav):
     #print("inside f(x)")
     #print("N=",N," fs=",fs)
     # threshold frequency
-    F=2.1 
+    F=1.88
     
     # length of samples
-    #k1=round(N*5100/fs)
-    #k2=round(N*11125/fs)
-    k1=10000
-    k2=20000
+    k1=round(N*5100/fs)
+    k2=round(N*11125/fs)
+    #k1=10000
+    #k2=20000
     
     #print("values of k1,k2 are:",k1,k2)
     
     X=absolute_value_of_vector(ff(wav,N))
-    
+    #print(X)
     #avgx = sum(X)/len(X)
     #N_list.append(avgx)
     
@@ -73,10 +81,12 @@ def recognize_yes_or_no(N,fs,wav):
 #        k2_list.append(k2)
 #        
 #       
-#    if f<F:
-#        print("IVR RESPONSE = YES")
-#    else:
-#        print("IVR RESPONSE = NO")        
+    if f<F:
+        #print("IVR RESPONSE = YES")
+        result.append("YES")
+    else:
+        #print("IVR RESPONSE = NO")
+        result.append("NO")
     return 
 
 
@@ -146,11 +156,26 @@ fs_list=[]
 N_list=[]
 k1_list=[]
 k2_list=[]
+result=[]
+quest = ["Has the sylabbus of the course been completed successfully?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Has the sylabbus of the course been completed successfully?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Has the sylabbus of the course been completed successfully?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?",
+"Do you think that you are able to understand the real life applications regarding this subject?"
+]
 
 ### start reading and fft
 
 if inp=='*':
-    for i in range(1,25):
+    for i in range(2,18):
         file_path=read_wav(i)            
         test_fft(file_path)
 else:
@@ -165,52 +190,53 @@ else:
 
 yes_f=[]
 yes_f.append(f_list[0])
-yes_f.extend(f_list[2:7])
-yes_f.append(f_list[10])
-yes_f.extend(f_list[11:17])
+yes_f.extend(f_list[2:4])
+yes_f.extend(f_list[7:11])
 
 #
 #
 no_f=[]
 no_f.append(f_list[1])
-no_f.extend(f_list[7:10])
-no_f.extend(f_list[17:25])
+no_f.extend(f_list[4:7])
+no_f.extend(f_list[11:])
 
 
 
 #
 ##print(len(yes_f),len(no_f))
 
-#s=1.0
-#bins=[]
-#bins.append(s)
-#for i in range(20):
-#    s=s+0.05
-#    bins.append(s)
+s=1.5
+bins=[]
+bins.append(s)
+for i in range(15):
+    s=s+0.05
+    bins.append(s)
 #    
 #print(bins)
+
+
 
 #### histogram
 #
 
-#plt.hist(yes_f, bins, histtype='bar', rwidth=0.5)
-##plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
-##plt.hist(X, bins, histtype='bar', rwidth=0.05)
-#plt.xlabel('x')
-#plt.ylabel('y')
-#plt.title('yes list histogram')
-#plt.legend()
-#plt.show()
+plt.hist(yes_f, bins, histtype='bar', rwidth=0.5)
+#plt.hist(no_f, bins, histtype='bar', rwidth=0.3)
+#plt.hist(X, bins, histtype='bar', rwidth=0.05)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('yes list histogram')
+plt.legend()
+plt.show()
 
 
-##plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
-#plt.hist(no_f, bins, histtype='bar', rwidth=0.5)
-##plt.hist(X, bins, histtype='bar', rwidth=0.05)
-#plt.xlabel('x')
-#plt.ylabel('y')
-#plt.title('no list histogram')
-#plt.legend()
-#plt.show()
+#plt.hist(yes_f, bins, histtype='bar', rwidth=0.3)
+plt.hist(no_f, bins, histtype='bar', rwidth=0.5)
+#plt.hist(X, bins, histtype='bar', rwidth=0.05)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('no list histogram')
+plt.legend()
+plt.show()
 
 #
 #### save as png
@@ -221,3 +247,6 @@ no_f.extend(f_list[17:25])
 #
 #
 
+
+### convert to json
+to_json(quest,results)
